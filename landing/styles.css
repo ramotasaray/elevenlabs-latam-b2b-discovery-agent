@@ -1,0 +1,26 @@
+/* Custom overrides para el widget de ElevenLabs */
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Widget container */
+#elevenlabs-agent-widget elevenlabs-convai {
+  width: 100%;
+  display: block;
+}
+
+/* Animación del dot verde del header */
+@keyframes pulse-gentle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse {
+  animation: pulse-gentle 2s ease-in-out infinite;
+}

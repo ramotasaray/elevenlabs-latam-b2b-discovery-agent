@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElevenAgents LATAM B2B — Demo conversacional en español</title>
+  <meta name="description" content="Demo de un agente conversacional construido con ElevenAgents para mostrar el caso de uso B2B en LATAM. Prueba de trabajo para la aplicación al puesto de B2B Marketing Spanish-LATAM Growth Lead en ElevenLabs.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-zinc-950 text-zinc-100 font-sans antialiased">
+
+  <!-- Header -->
+  <header class="border-b border-zinc-800">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></div>
+        <span class="text-sm font-medium text-zinc-300">Demo · ElevenAgents LATAM</span>
+      </div>
+      <a href="https://github.com/ramotasaray/elevenlabs-latam-b2b-discovery-agent" target="_blank" class="text-sm text-zinc-400 hover:text-zinc-100 transition">Ver repo →</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="max-w-4xl mx-auto px-6 pt-20 pb-16 text-center">
+    <p class="text-xs uppercase tracking-widest text-emerald-400 mb-4">Prueba de trabajo · Mayo 2026</p>
+    <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+      Una agente comercial<br>
+      <span class="text-emerald-400">que vende en español.</span>
+    </h1>
+    <p class="text-xl text-zinc-400 mb-12 max-w-2xl mx-auto">
+      María atiende prospects B2B en español mexicano. Identifica caso de uso, mapea al producto correcto de ElevenLabs, maneja objeciones LATAM, y agenda demo con el equipo.
+    </p>
+
+    <!-- CTA pointing to floating widget -->
+    <div class="inline-flex items-center gap-3 px-6 py-4 bg-zinc-900 border border-emerald-400/30 rounded-full">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-zinc-900 font-bold text-sm">M</div>
+        <span class="text-sm font-medium">María está en línea</span>
+      </div>
+      <span class="text-zinc-500">→</span>
+      <span class="text-sm text-zinc-300">Tocá el botón flotante para conversar</span>
+    </div>
+
+    <p class="text-xs text-zinc-500 mt-6">El widget de María vive en la esquina inferior derecha ↘</p>
+  </section>
+
+  <!-- Bonus outbound MP3 player -->
+  <section class="max-w-3xl mx-auto px-6 py-12">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-8">
+      <div class="flex items-start justify-between mb-4 gap-4">
+        <div>
+          <p class="text-xs uppercase tracking-widest text-emerald-400 mb-2">Bonus · Outbound MP3</p>
+          <h2 class="text-2xl font-bold mb-2">Lo que sonaría tu outbound</h2>
+          <p class="text-zinc-400 text-sm">30 segundos. Audio personalizado a una CMO de fintech mexicana. Generado vía API de ElevenLabs Text-to-Speech, en Python, en el repo.</p>
+        </div>
+      </div>
+      <audio controls class="w-full mt-4">
+        <source src="../samples/01_outbound_mexico_fintech_cmo.mp3" type="audio/mpeg">
+        Tu navegador no soporta el reproductor de audio.
+      </audio>
+      <p class="text-xs text-zinc-500 mt-3">Caso de uso: voicemail drop o audio adjunto en cold email outbound para sequence ABM.</p>
+    </div>
+  </section>
+
+  <!-- Use cases section -->
+  <section class="max-w-6xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-4">Qué demuestra este demo</h2>
+    <p class="text-zinc-400 text-center mb-12 max-w-2xl mx-auto">Cobertura de los tres productos de ElevenLabs aplicados al caso B2B LATAM.</p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-emerald-400 transition">
+        <div class="text-emerald-400 text-2xl mb-3">◉</div>
+        <h3 class="font-semibold mb-2">ElevenAgents</h3>
+        <p class="text-sm text-zinc-400">La agente conversacional que escuchás (María) es ElevenAgents en producción. Embebible en cualquier web con una línea de código.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-emerald-400 transition">
+        <div class="text-emerald-400 text-2xl mb-3">◇</div>
+        <h3 class="font-semibold mb-2">ElevenCreative</h3>
+        <p class="text-sm text-zinc-400">El MP3 outbound de arriba lo generó la API de TTS. Mismo workflow que voiceovers para ads o podcasts B2B.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-emerald-400 transition">
+        <div class="text-emerald-400 text-2xl mb-3">▲</div>
+        <h3 class="font-semibold mb-2">ElevenAPI</h3>
+        <p class="text-sm text-zinc-400">El script Python que provisiona a María y los KBs vive en el repo. Todo via API, reproducible end-to-end.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Build context -->
+  <section class="max-w-3xl mx-auto px-6 py-16 border-t border-zinc-800">
+    <h2 class="text-2xl font-bold mb-6">Por qué construí esto</h2>
+    <div class="space-y-4 text-zinc-300">
+      <p>
+        Apliqué al puesto de <strong>B2B Marketing Spanish-LATAM Growth Lead</strong> en ElevenLabs. El form pregunta "what did you build or explore with ElevenLabs?" — una invitación abierta. La mayoría de aplicantes va a responder con texto. Yo construí una agente conversacional.
+      </p>
+      <p>
+        El razonamiento: la mejor forma de demostrar que entiendo la motion B2B LATAM que ElevenLabs está armando, y que puedo construir con su propio producto en lugar de solo usarlo, es hacer el deliverable que ese equipo construiría en sus primeras dos semanas de existir. Una agente en español que cualifica leads inbound, manejada por su propia plataforma.
+      </p>
+      <p>
+        Tiempo invertido: aproximadamente 2 horas. Reproducible end-to-end con Claude Code + ElevenLabs free tier.
+      </p>
+    </div>
+  </section>
+
+  <!-- Author / footer -->
+  <footer class="border-t border-zinc-800 mt-16">
+    <div class="max-w-6xl mx-auto px-6 py-12">
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div>
+          <p class="text-sm text-zinc-500 mb-2">Construido por</p>
+          <p class="text-xl font-semibold mb-1">Daniel Ramírez</p>
+          <p class="text-zinc-400 text-sm mb-4">Growth & Marketing Strategist · AI Builder · San José, Costa Rica</p>
+          <div class="flex flex-wrap gap-4 text-sm">
+            <a href="mailto:daniel.ramirez.crc@gmail.com" class="text-emerald-400 hover:underline">daniel.ramirez.crc@gmail.com</a>
+            <a href="https://linkedin.com/in/ramo5" target="_blank" class="text-emerald-400 hover:underline">linkedin.com/in/ramo5</a>
+            <a href="https://referido.pro" target="_blank" class="text-emerald-400 hover:underline">referido.pro</a>
+          </div>
+        </div>
+        <div class="text-sm text-zinc-500">
+          <p class="mb-2"><strong class="text-zinc-400">Disclaimer:</strong> este demo no está afiliado oficialmente con ElevenLabs. Construido como prueba de trabajo para una aplicación al puesto de B2B Marketing Spanish-LATAM Growth Lead, mayo 2026.</p>
+          <p>El agente está groundeado a documentación pública de ElevenLabs vía knowledge base. Para una conversación oficial con el equipo comercial, contactá directamente a través del sitio elevenlabs.io.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ElevenAgents widget: floating, Spanish-localized -->
+  <elevenlabs-convai
+    agent-id="agent_2301ksqvm31zersra155na1f1a6d"
+    action-text="¿Conversamos?"
+    start-call-text="Iniciar llamada"
+    end-call-text="Finalizar llamada"
+    expand-text="Abrir chat"
+    listening-text="Escuchando..."
+    speaking-text="María hablando..."
+    override-language="es">
+  </elevenlabs-convai>
+  <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+</body>
+</html>
