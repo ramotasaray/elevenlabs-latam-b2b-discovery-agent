@@ -6,7 +6,7 @@ Three components, each running in different infrastructure, connected by the age
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  1. Static landing page  (Vercel CDN, free tier)                 │
+│  1. Static landing page  (Vercel CDN, Hobby plan)                │
 │     - HTML + Tailwind CDN + custom CSS                           │
 │     - Loads ElevenLabs widget script                             │
 │     - Mounts <elevenlabs-convai agent-id="..."> in body          │
@@ -35,16 +35,19 @@ Three components, each running in different infrastructure, connected by the age
 └──────────────────────────────────────────────────────────────────┘
 ```
 
-Separately, the bonus MP3:
+Separately, the bonus outbound (Amanda — the SDR persona, voice in samples/):
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  Bonus outbound: samples/01_outbound_mexico_fintech_cmo.mp3      │
+│  Bonus outbound (Amanda):                                        │
+│    samples/01_outbound_mexico_fintech_cmo.mp3                    │
 │                                                                  │
 │  samples/generate.py  →  ElevenLabs TTS API  →  MP3 file         │
-│       (with Spanish MX voice, the persuasive cold outbound)      │
+│       (Spanish MX voice, persuasive cold outbound script)        │
 └──────────────────────────────────────────────────────────────────┘
 ```
+
+María (inbound widget) and Amanda (outbound MP3) are two distinct personas on two voice IDs — mirrors how real B2B teams split inbound and outbound. Rationale in `docs/design-decisions.md`.
 
 ## Why this architecture (vs alternatives)
 
@@ -78,12 +81,12 @@ Conversation transcript and audio are stored in ElevenLabs dashboard (configurab
 Per the May 2026 ElevenLabs pricing:
 
 - **Free tier**: 15 minutes of agent calls per month, includes widget
-- **Starter $6/mo**: 75 minutes of agent calls, includes widget
-- **Vercel free tier**: unlimited static hosting for personal projects
+- **Starter $6/mo**: 75 minutes of agent calls + 30k TTS credits, includes widget
+- **Vercel Hobby**: unlimited static hosting for personal projects, $0
 - **Knowledge base storage**: included in plan
-- **TTS for bonus MP3**: free tier covers ~10 minutes of audio; this build uses ~30 seconds
+- **TTS for Amanda MP3**: ~30 seconds, well within Starter monthly credits
 
-For the demo / review window, total cost is $0-6 depending on plan.
+**This deployment runs on ElevenLabs Starter ($6/mo)** for review-window safety margin. Total monthly cost: $6.
 
 ## Security and disclaimers
 

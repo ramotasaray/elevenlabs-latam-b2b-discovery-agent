@@ -2,11 +2,13 @@
 
 Notes on the choices behind this build and the reasoning. Useful for anyone reproducing or extending it.
 
-## Persona: María, Mexican neutral Spanish
+## Personas: María (inbound) + Amanda (outbound)
 
-**Why a single female persona, not multi-persona**: scope constraint. One persona = one tight system prompt + one voice + one consistent test surface. Multi-persona (María for MX, Lucía for AR, Camila for CO) would multiply the test surface 3x for marginal incremental value at the demo stage.
+**Why two personas instead of one**: inbound and outbound are different motions in real B2B teams, often staffed by different people. One agent per channel = clean separation of concerns. María handles inbound qualification (lives in the widget). Amanda handles outbound (lives in the MP3 sample). Both use the same product stack (ElevenAgents for live conversation, ElevenAPI for TTS audio assets), which is the point — same platform, two motions.
 
-**Why Mexican neutral, not Argentine or Colombian**: Mexico is the explicit wedge market in the JD. Mexican Spanish has the largest Spanish-speaking economy ($1.4T GDP) and the highest enterprise SaaS adoption in LATAM. Mexican neutral is also the most widely understood across LATAM, so the demo conversation works for AR/CO/PE/CL visitors even if not optimized for them.
+**Why not multi-persona within each channel**: scope. One persona per channel = one tight system prompt (María) or one tight script (Amanda) + one voice + one consistent test surface. Multi-persona per channel (María-MX + Lucía-AR + Camila-CO for inbound) would multiply the test surface 3x for marginal incremental value at the demo stage. Regional variants are the natural next step in production.
+
+**Why Mexican neutral for both, not Argentine or Colombian**: Mexico is the explicit wedge market in the JD. Mexican Spanish has the largest Spanish-speaking economy ($1.4T GDP) and the highest enterprise SaaS adoption in LATAM. Mexican neutral is also the most widely understood across LATAM, so the demo conversation works for AR/CO/PE/CL visitors even if not optimized for them.
 
 **Why "ejecutiva comercial" rather than "specialist" or "consultant"**: "ejecutiva comercial" is the LATAM enterprise term that signals B2B authority without being jargon-y. Maps to "BDR with strategic depth" in US terms.
 
@@ -40,15 +42,15 @@ Notes on the choices behind this build and the reasoning. Useful for anyone repr
 
 **Why the emerald accent color**: an editorial choice that signals "live" and "operational" without copying ElevenLabs' actual brand. Distinct enough to read as candidate work, coherent enough to feel like a B2B SaaS asset.
 
-## Outbound MP3: 1 sample, not 3
+## Outbound MP3 (Amanda): 1 sample, not 3
 
-**Original plan**: 3 samples in MX, AR, CO accents.
+**Original plan**: 3 samples in MX, AR, CO accents under a single persona.
 
-**Revised**: 1 high-quality Mexican sample as bonus. Reasoning:
+**Revised**: 1 high-quality Mexican sample under the Amanda persona. Reasoning:
 - Mexico is the wedge; AR/CO are follow-ons
 - 1 strong sample > 3 generic ones
 - The Python script generalizes to any locale; reviewer can regenerate AR/CO if curious
-- Free tier credits used for the agent, not for redundant MP3s
+- Credits focused on the live agent (María), Amanda as a single anchor sample
 
 ## Vercel + GitHub: zero infra cost, public artifact
 
@@ -68,7 +70,7 @@ Notes on the choices behind this build and the reasoning. Useful for anyone repr
 
 ## What I learned building this
 
-- ElevenAgents free tier is generous enough to ship a demo (15 min calls + widget)
+- ElevenAgents free tier is generous enough to ship a demo (15 min calls + widget); this build upgraded to Starter ($6/mo, 75 min) for review-window safety margin
 - The widget embed (`<elevenlabs-convai>`) is genuinely a single tag — closest thing to "no-code voice AI" I have used
 - The knowledge base + system prompt combo is more important than any other config decision; everything else (voice, LLM choice, conversation flow) is downstream of the prompt + KB
 - Spanish LATAM voice quality in ElevenLabs models v2/v3 is high enough that the "robotic IVR" objection should die in 12-24 months across the entire enterprise market

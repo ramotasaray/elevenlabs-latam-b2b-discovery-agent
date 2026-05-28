@@ -1,6 +1,6 @@
 # ElevenLabs LATAM B2B Discovery Agent
 
-> A live conversational agent (María, an ElevenLabs LATAM commercial assistant) built with ElevenAgents + a bonus outbound MP3 generated via ElevenAPI. Constructed as proof-of-work for an application to the **B2B Marketing Spanish-LATAM Growth Lead** role at ElevenLabs, May 2026.
+> A live conversational agent (María, the inbound discovery assistant) built with ElevenAgents + a bonus outbound voicemail (Amanda, the SDR persona) generated via ElevenAPI. Constructed as proof-of-work for an application to the **B2B Marketing Spanish-LATAM Growth Lead** role at ElevenLabs, May 2026.
 
 **Live demo**: https://elevenlabs-latam-demo.vercel.app
 
@@ -16,7 +16,7 @@ A working demonstration of what a Spanish-LATAM B2B inbound qualification motion
 2. Talks (literally, by voice) with **María**, an agent built with ElevenAgents
 3. María identifies their use case, maps it to the correct ElevenLabs product (Agents / Creative / API), manages 1-2 LATAM-typical objections, and offers a small commitment (book real demo with the team or send materials by email)
 
-Plus a 30-second outbound voicemail-style MP3 sample generated via the TTS API, demonstrating the same product's capability for the OUTBOUND side of the funnel.
+Plus **Amanda**, a 30-second outbound voicemail-style MP3 sample generated via the TTS API. Two personas, two roles: María on inbound (the embedded widget), Amanda on outbound (the audio asset). Mirrors how real B2B teams structure their motion.
 
 ## Why this deliverable
 
@@ -29,8 +29,8 @@ The role description (publicly visible at elevenlabs.io/careers) calls for someo
 
 The most direct way to demonstrate I can do that work is to do a small slice of it. This repo is that slice:
 
-- **María (the agent)** = the inbound qualification motion that doesn't exist yet
-- **Outbound MP3** = the kind of audio asset that goes into multi-language outbound sequences
+- **María (inbound agent)** = the inbound qualification motion that doesn't exist yet
+- **Amanda (outbound MP3)** = the kind of audio asset that goes into multi-language outbound sequences
 - **The Spanish landing page** = how the brand would localize for Mexican B2B
 - **The repo and the docs** = how I would document and ship in production
 
@@ -103,7 +103,7 @@ elevenlabs-latam-b2b-discovery-agent/
 ### Prerequisites
 
 - Python 3.10+
-- An ElevenLabs API key (free tier works for testing; Starter $6/mo recommended for production review)
+- An ElevenLabs API key (this demo runs on Starter $6/mo for the review window; free tier also works locally with reduced minutes)
 - `pip` and a virtual environment
 
 ### Steps
@@ -153,7 +153,7 @@ See `docs/design-decisions.md` for the long-form rationale. The short version:
 - **No price quotes**: the agent routes pricing conversations to the real ElevenLabs team
 - **Disclaimer-first**: María always discloses she is a candidate's proof-of-work in turn 1
 - **Knowledge base grounded**: 4 documents covering each product + LATAM-specific objections, to prevent hallucinations
-- **Free tier scoped**: works on the 15-minute free tier; recommend Starter $6 for review-window safety margin
+- **Starter plan scoped**: running on ElevenLabs Starter ($6/mo) for the review window — 75 min of agent calls + 30k TTS credits comfortably cover reviewer traffic
 - **Conversation scope tight**: discovery and routing, not full sales cycle
 
 ## What I would do differently if I owned this in production
@@ -170,7 +170,7 @@ See `docs/design-decisions.md` for the long-form rationale. The short version:
 - This is not an official ElevenLabs product or representation
 - Built independently in approximately 2 hours as proof-of-work for an application
 - Knowledge base is grounded on public ElevenLabs documentation as of May 2026; product details may have evolved
-- Free tier ElevenAgents includes 15 minutes of conversation per month; if the agent stops responding, the tier limit may have been reached
+- This deployment uses the Starter plan ($6/mo, 75 minutes of agent calls); if the agent stops responding, the monthly cap may have been reached
 
 ## Contact
 
