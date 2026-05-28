@@ -1,0 +1,9 @@
+*.py
+**/*.py
+requirements.txt
+__pycache__/
+.env
+.env.example
+agent/
+docs/
+README.md

@@ -2,7 +2,7 @@
 
 > A live conversational agent (María, an ElevenLabs LATAM commercial assistant) built with ElevenAgents + a bonus outbound MP3 generated via ElevenAPI. Constructed as proof-of-work for an application to the **B2B Marketing Spanish-LATAM Growth Lead** role at ElevenLabs, May 2026.
 
-**Live demo**: https://elevenlabs-latam-demo.vercel.app *(to be deployed)*
+**Live demo**: https://elevenlabs-latam-demo.vercel.app
 
 **Author**: Daniel Ramírez · [linkedin.com/in/ramo5](https://linkedin.com/in/ramo5) · daniel.ramirez.crc@gmail.com
 

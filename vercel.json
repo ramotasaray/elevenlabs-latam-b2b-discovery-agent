@@ -1,18 +1,20 @@
 {
   "version": 2,
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    { "source": "/", "destination": "/landing/index.html" }
+  "builds": [
+    { "src": "landing/index.html", "use": "@vercel/static" },
+    { "src": "landing/styles.css", "use": "@vercel/static" },
+    { "src": "samples/01_outbound_mexico_fintech_cmo.mp3", "use": "@vercel/static" }
   ],
-  "headers": [
+  "routes": [
+    { "src": "/", "dest": "/landing/index.html" },
     {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
-      ]
+      "src": "/(.*)",
+      "dest": "/$1",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Referrer-Policy": "strict-origin-when-cross-origin"
+      }
     }
   ]
 }
