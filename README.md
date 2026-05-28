@@ -74,10 +74,10 @@ The most direct way to demonstrate I can do that work is to do a small slice of 
 ```
 elevenlabs-latam-b2b-discovery-agent/
 ├── README.md                            # This file
+├── vercel.json                          # Vercel deploy config + security headers
 ├── landing/
 │   ├── index.html                       # The landing page with widget embed
-│   ├── styles.css                       # Custom styles on top of Tailwind CDN
-│   └── vercel.json                      # Vercel deploy config + security headers
+│   └── styles.css                       # Custom styles on top of Tailwind CDN
 ├── agent/
 │   ├── system-prompt.md                 # María's full system prompt
 │   ├── knowledge-base/
