@@ -142,6 +142,71 @@
   </elevenlabs-convai>
   <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
+  <!-- Degradación elegante del micrófono: la voz es la experiencia principal, pero si el
+       navegador bloquea el micrófono (Brave, móvil, redes corporativas) María cae a chat de
+       texto con un aviso, en lugar de mostrar un "Permission denied" que parece roto. -->
+  <script>
+    (function () {
+      var swapped = false;
+
+      function degradeToText() {
+        if (swapped) return;
+        var w = document.querySelector("elevenlabs-convai");
+        if (!w) return;
+        swapped = true;
+        var fresh = w.cloneNode(true); // copia atributos; re-inicializa el widget
+        fresh.setAttribute("override-text-only", "true");
+        w.replaceWith(fresh);
+        showToast();
+        setTimeout(openChat, 700);
+      }
+
+      function openChat() {
+        var w = document.querySelector("elevenlabs-convai");
+        if (!w || !w.shadowRoot) { setTimeout(openChat, 400); return; }
+        var btns = w.shadowRoot.querySelectorAll("button");
+        for (var i = 0; i < btns.length; i++) {
+          var lbl = (btns[i].getAttribute("aria-label") || btns[i].textContent || "").trim().toLowerCase();
+          if (lbl === "message" || lbl.indexOf("mensaje") >= 0 || lbl.indexOf("conversamos") >= 0) { btns[i].click(); return; }
+        }
+      }
+
+      function showToast() {
+        if (document.getElementById("mic-fallback-toast")) return;
+        var t = document.createElement("div");
+        t.id = "mic-fallback-toast";
+        t.textContent = "Tu navegador bloqueó el micrófono. María sigue disponible por chat 👇";
+        t.style.cssText = "position:fixed;bottom:6.5rem;right:1.25rem;max-width:min(22rem,90vw);background:#0a0a0a;color:#fff;border:1px solid #34d399;padding:.75rem 1rem;border-radius:.7rem;font:14px/1.45 system-ui,-apple-system,sans-serif;z-index:2147483647;box-shadow:0 10px 35px rgba(0,0,0,.45)";
+        document.body.appendChild(t);
+        setTimeout(function () { t.style.transition = "opacity .5s"; t.style.opacity = "0"; setTimeout(function () { t.remove(); }, 600); }, 9000);
+      }
+
+      // 1) Proactivo: si el navegador ya reporta el micrófono como denegado, arrancamos en texto.
+      try {
+        if (navigator.permissions && navigator.permissions.query) {
+          navigator.permissions.query({ name: "microphone" }).then(function (st) {
+            if (st.state === "denied") degradeToText();
+            st.onchange = function () { if (st.state === "denied") degradeToText(); };
+          }).catch(function () {});
+        }
+      } catch (e) {}
+
+      // 2) Red de seguridad: captura el fallo real de getUserMedia (cubre Brave y la denegación
+      //    en tiempo de ejecución que la Permissions API no detecta).
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        var orig = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+        navigator.mediaDevices.getUserMedia = function (constraints) {
+          return orig(constraints).catch(function (err) {
+            if (err && (err.name === "NotAllowedError" || err.name === "NotFoundError" || err.name === "SecurityError" || err.name === "AbortError")) {
+              degradeToText();
+            }
+            throw err;
+          });
+        };
+      }
+    })();
+  </script>
+
   <!-- Vercel Web Analytics (cookieless, anonymous page views) -->
   <script defer src="/_vercel/insights/script.js"></script>
 
